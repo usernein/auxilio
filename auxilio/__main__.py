@@ -17,7 +17,7 @@ def main():
     except InvalidCode:
         print('Código inválido ou expirado!')
     except InvalidResponse as e:
-        print('Resposta inválida da API: {e}')
+        print(f'Resposta inválida da API: {e}')
 
 if __name__ == '__main__':
     main()

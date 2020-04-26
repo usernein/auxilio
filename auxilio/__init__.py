@@ -3,6 +3,7 @@ import requests
 import time
 
 from .exceptions import InvalidCode, InvalidResponse
+from .helpers import valid_cpf
 
 VALIDATION_URL = "https://auxilio.caixa.gov.br/api/sms/validarLogin"
 LOGIN_URL = "https://auxilio.caixa.gov.br/api/cadastro/validarLogin/{cpf}"
