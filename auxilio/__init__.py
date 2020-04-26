@@ -11,6 +11,9 @@ HEADERS = {
     "content-type": "application/json; charset=utf-8"
 }
 
+class AuxilioStatus(dict):
+    pass
+
 def status(cpf, code):
     payload = json.dumps({
         "cpf": int(cpf)
@@ -29,10 +32,10 @@ def status(cpf, code):
         if not dados:
             raise InvalidResponse(request.text)
         
-        if dados.get('codigo') == 401:
+        if dados.get('codigo') === 401:
             raise InvalidCode(request.text)
         
-        return dados
+        return AuxilioStatus(**dados)
         """
             Nome: {dados['noPessoa']}
             CPF: {dados['cpf']}
