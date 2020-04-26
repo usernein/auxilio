@@ -32,7 +32,7 @@ def status(cpf, code):
         if not dados:
             raise InvalidResponse(request.text)
         
-        if dados.get('codigo') === 401:
+        if dados.get('codigo') == 401:
             raise InvalidCode(request.text)
         
         return AuxilioStatus(**dados)
