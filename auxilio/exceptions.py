@@ -6,5 +6,7 @@ class AuxilioException(Exception):
 
 class InvalidCode(AuxilioException):
     pass
+class InvalidCPF(AuxilioException):
+    pass
 class InvalidResponse(AuxilioException):
     pass

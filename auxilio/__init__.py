@@ -2,7 +2,7 @@ import json
 import requests
 import time
 
-from .exceptions import InvalidCode, InvalidResponse
+from .exceptions import InvalidCode, InvalidCPF, InvalidResponse
 from .helpers import valid_cpf
 
 VALIDATION_URL = "https://auxilio.caixa.gov.br/api/sms/validarLogin"
@@ -49,4 +49,4 @@ def status(cpf, code):
             Solicitação inicial: {dados['dhFinalizacaoCadastro']}
         """
     else:
-        raise InvalidCode(request.text)
+        raise InvalidCPF(request.text)
