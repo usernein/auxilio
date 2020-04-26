@@ -11,8 +11,9 @@ HEADERS = {
     "content-type": "application/json; charset=utf-8"
 }
 
-class AuxilioStatus(dict):
-    pass
+class AuxilioStatus(object):
+    def __init__(self, **entries):
+        self.__dict__.update(entries)
 
 def status(cpf, code):
     payload = json.dumps({
