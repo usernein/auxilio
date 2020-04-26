@@ -11,9 +11,11 @@ HEADERS = {
     "content-type": "application/json; charset=utf-8"
 }
 
-class AuxilioStatus(object):
-    def __init__(self, **entries):
-        self.__dict__.update(entries)
+# From https://stackoverflow.com/a/14620633
+class AuxilioStatus(dict):
+    def __init__(self, *args, **kwargs):
+        super(AuxilioStatus, self).__init__(*args, **kwargs)
+        self.__dict__ = self
 
 def status(cpf, code):
     payload = json.dumps({
