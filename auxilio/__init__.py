@@ -20,7 +20,7 @@ def status(cpf, code):
     
     if 'VÁLIDO' in msg:
         payload = json.dumps({
-            "code": str(code)
+            "token": str(code)
         })
         
         request = requests.put(LOGIN_URL.format(cpf=cpf), headers=HEADERS, data=payload)
