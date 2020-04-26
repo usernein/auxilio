@@ -27,10 +27,10 @@ def status(cpf, code):
         dados = request.json()
         
         if not dados:
-            raise InvalidResponse(request.data())
+            raise InvalidResponse(request.text)
         
         if dados.get('codigo') == 401:
-            raise InvalidCode(request.data())
+            raise InvalidCode(request.text)
         
         return dados
         """
@@ -43,4 +43,4 @@ def status(cpf, code):
             Solicitação inicial: {dados['dhFinalizacaoCadastro']}
         """
     else:
-        raise InvalidCode(request.data())
+        raise InvalidCode(request.text)
