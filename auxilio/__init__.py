@@ -15,8 +15,8 @@ def status(cpf, code):
     payload = json.dumps({
         "cpf": int(cpf)
      })
-    consulta = requests.post(VALIDATION_URL, headers=HEADERS, data=payload)
-    msg = consulta.json()['mensagem'].upper()
+    request = requests.post(VALIDATION_URL, headers=HEADERS, data=payload)
+    msg = request.json()['mensagem'].upper()
     
     if 'VÁLIDO' in msg:
         payload = json.dumps({
@@ -30,7 +30,7 @@ def status(cpf, code):
             raise InvalidResponse(request.data())
         
         if dados.get('codigo') == 401:
-            raise InvalidCode
+            raise InvalidCode(request.data())
         
         return dados
         """
@@ -43,4 +43,4 @@ def status(cpf, code):
             Solicitação inicial: {dados['dhFinalizacaoCadastro']}
         """
     else:
-        raise InvalidCode
+        raise InvalidCode(request.data())
